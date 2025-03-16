@@ -34,7 +34,15 @@
         display: none; /* Hide desktop menu */
     }
 }
-
+.brand-txtMobile {
+    position: absolute;
+    left: 50%;
+    top: 0; /* Keep text at the top */
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
     </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
