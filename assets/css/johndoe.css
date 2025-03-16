@@ -11416,11 +11416,19 @@ pre .code {
 .navbar .brand {
   text-align: center;
 }
+#about{
+  padding-top: 55px;
+}
+
+
+/* navbar sticky-top navbar-expand-lg navbar-light bg-white affix-top
+navbar sticky-top navbar-expand-lg navbar-light bg-white affix */
+
 
 .navbar .brand .brand-img {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 100%;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -11456,6 +11464,25 @@ pre .code {
   }
 }
 
+.navbarMobile .brand {
+  display: none;
+}
+.navbarMobile{
+  display: none;
+}
+@media (max-width: 768px) {
+  .navbarMobile .brand {
+    display: flex;
+  }
+  .navbarMobile{
+    display: flex;
+    margin-top: -76px;
+  }
+  
+}
+
+
+
 .navbar.affix .brand-txt {
   bottom: 0;
   opacity: 1;
@@ -11465,6 +11492,16 @@ pre .code {
   top: -10px;
   opacity: 0;
 }
+
+/* .navbar.affixMobile .brand-txt {
+  bottom: 0;
+  opacity: 1;
+}
+
+.navbar.affixMobile .brand-img {
+  top: -10px;
+  opacity: 0;
+} */
 
 .pagination .page-item {
   margin: 0 4px;

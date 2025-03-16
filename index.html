@@ -28,7 +28,7 @@
 /* For Mobile Screens (Max width 768px) */
 @media screen and (max-width: 768px) {
     #navMobile {
-        display: block; /* Show mobile menu */
+        display: flex; /* Show mobile menu */
     }
     #navDekstop {
         display: none; /* Hide desktop menu */
@@ -41,6 +41,10 @@
     <!-- <a href="components.html" class="btn btn-primary btn-component" data-spy="affix" data-offset-top="600"><i class="ti-shift-left-alt"></i> Components</a> -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" id="navMobile" data-spy="affix" data-offset-top="510">
         <div class="container">
+            <div class="brand-txtMobile">
+                <h5 class="brand-title">Md Khalid</h5>
+                <div class="brand-subtitle">Full Stack Web Developer</div>
+            </div>
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,13 +60,7 @@
                         <a href="#resume" class="nav-link">Resume</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav brand">
-                    <img src="assets/imgs/Khalid.jpg" alt="" class="brand-img">
-                    <li class="brand-txt">
-                        <h5 class="brand-title">Md Khalid</h5>
-                        <div class="brand-subtitle">Full Stack Web Developer</div>
-                    </li>
-                </ul>
+               
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a href="#service" class="nav-link">Projects</a>
@@ -101,6 +99,17 @@
             </div>
         </div>
     </header>
+    <!-- <div class="navbar sticky-top navbar-expand-lg navbar-light bg-white affix-top"> -->
+        <div class="affixMobile">
+    <div class="navbarMobile navbar ">
+    <ul class="navbar-nav brand">
+        <img src="assets/imgs/Khalid.jpg" alt="" class="brand-img"   style="z-index: 10000;">
+        <li class="brand-txt">
+            <h5 class="brand-title">Md Khalid</h5>
+            <div class="brand-subtitle">Full Stack Web Developer</div>
+        </li>
+    </ul></div></div>
+<!-- </div> -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white"  id="navDekstop" data-spy="affix" data-offset-top="510">
         <div class="container">
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -813,6 +822,77 @@ reviews to ensure the integrity and security of web applications.
 
     <!-- JohnDoe js -->
     <script src="assets/js/johndoe.js"></script>
+
+    <style>
+       .brand-img {
+        position: absolute;
+    left: 50%; /* Center horizontally */
+    top: 0;
+    transform: translateX(-50%); /* Perfect centering */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hide image and show text when affixed */
+.affixMobile.affixed .brand-img {
+    opacity: 0;
+    transform: translate(-50%, -30px);
+}
+
+.brand-txtMobile {
+    position: absolute;
+    left: 50%;
+    top: 0; /* Keep text at the top */
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+/* Show text when image is hidden */
+.brand-img.hidden ~ .brand-txtMobile {
+    opacity: 1;
+}
+ </style>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let navbar = document.querySelector(".affixMobile");
+            let img = document.querySelector(".brand-img");
+        
+            function toggleAffix() {
+                let imgTop = img.getBoundingClientRect().top;
+        
+                if (imgTop <= -10) {
+                    navbar.classList.add("affixed"); // Add class when scrolling past -10px
+                } else {
+                    navbar.classList.remove("affixed"); // Remove class when scrolling back up
+                }
+            }
+        
+            window.addEventListener("scroll", toggleAffix);
+        });
+
+        window.addEventListener("scroll", function () {
+    var img = document.querySelector(".brand-img");
+    var text = document.querySelector(".brand-txtMobile");
+    
+    var imgRect = img.getBoundingClientRect(); // Get position of image
+
+    if (imgRect.top < -10) { // When image moves completely out of view
+        img.classList.add("hidden");
+        text.style.opacity = "1";
+    } else {
+        img.classList.remove("hidden");
+        text.style.opacity = "0";
+    }
+});
+
+
+        </script>
+        
+
+        
+        
 
 </body>
 </html>
