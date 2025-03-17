@@ -850,6 +850,21 @@ reviews to ensure the integrity and security of web applications.
                 }, 500); // Small delay to ensure form submits
             }
         </script>
+	<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".nav-link");
+    const navCollapse = document.getElementById("navbarSupportedContent");
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            if (navCollapse.classList.contains("show")) {
+                navCollapse.classList.remove("show"); // Close the navbar
+            }
+        });
+    });
+});
+
+</script>
         
 
         
